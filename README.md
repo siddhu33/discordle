@@ -3,17 +3,26 @@ Discord Bot to play a wordle-like game with users.
 
 ![Image](images/Discordle.png)
 
+---
+## Requirements
+
+- ### `npm` of some kind installed.
+- ### `.env` file with discord token `DISCORD_TOKEN` populated.
+---
 ## Installation
 ```shell
+npm install -g yarn
 yarn install
+yarn start
 ```
+---
+## Commands
 
 ```d
 @Discordle !ping
 ```
 ### Ping server to see if it is up.
 
-## Commands
 ```d
 @Discordle !start [length]
 ```
@@ -28,3 +37,5 @@ yarn install
 @Discordle !guess [word]
 ```
 ### Guess the word described by `word`. Will increment the guesses counter
+---
+## NB - Many many thanks to the developer of [Wordle](https://www.powerlanguage.co.uk/wordle/) for inspiring this bot!
