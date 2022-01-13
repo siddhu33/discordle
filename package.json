@@ -4,7 +4,7 @@
   "description": "Discord Bot to play wordle with the users",
   "main": "index.js",
   "scripts": {
-    "start": "node bot.js",
+    "start": "npx nodemon bot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,7 +19,12 @@
   },
   "homepage": "https://github.com/siddhu33/discordle#readme",
   "dependencies": {
+    "@discordjs/builders": "^0.11.0",
+    "@discordjs/rest": "^0.2.0-canary.0",
+    "discord-api-types": "^0.26.1",
     "discord.js": "^13.6.0",
-    "dotenv": "^11.0.0"
+    "dotenv": "^11.0.0",
+    "eslint": "^8.6.0",
+    "nodemon": "^2.0.15"
   }
 }
