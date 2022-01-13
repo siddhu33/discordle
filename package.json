@@ -1,0 +1,25 @@
+{
+  "name": "discordle",
+  "version": "1.0.0",
+  "description": "Discord Bot to play wordle with the users",
+  "main": "index.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddhu33/discordle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siddhu33/discordle/issues"
+  },
+  "homepage": "https://github.com/siddhu33/discordle#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "dotenv": "^11.0.0"
+  }
+}
