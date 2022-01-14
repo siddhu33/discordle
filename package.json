@@ -12,7 +12,7 @@
     "url": "git+https://github.com/siddhu33/discordle.git"
   },
   "engines": {
-    "node": "17.1.10",
+    "node": "16.13.2",
     "npm": "8.1.2"
   },
   "keywords": [],
