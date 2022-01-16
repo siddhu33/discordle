@@ -1,4 +1,7 @@
-# discordle
+# discordle 
+
+![CI Status](https://github.com/siddhu33/discordle/actions/workflows/node.js.yml/badge.svg)
+
 Discord Bot to play a wordle-like game with users.
 
 ![Image](images/Discordle.png)
