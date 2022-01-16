@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx nodemon bot.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -31,8 +31,10 @@
     "nodemon": "^2.0.15"
   },
   "devDependencies": {
+    "@jest/globals": "^27.4.6",
     "eslint": "^8.6.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.4"
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.4.7"
   }
 }
