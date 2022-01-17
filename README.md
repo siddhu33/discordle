@@ -2,7 +2,9 @@
 
 ![CI Status](https://github.com/siddhu33/discordle/actions/workflows/node.js.yml/badge.svg)
 
-Discord Bot to play a wordle-like game with users.
+Discord Bot to play a wordle-like game with users. 
+
+## [Add this bot to your server!](https://discord.com/oauth2/authorize?client_id=931245994681700453&permissions=292057982976&scope=bot)
 
 ![Image](images/Discordle.png)
 
