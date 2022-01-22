@@ -43,4 +43,14 @@ yarn start
 ```
 ### Guess the word described by `word`. Will increment the guesses counter
 ---
+## Feature Ideas
+
+Pull requests very welcome for any of these!
+
+1. State management of some kind ( Redis, DB, file, etc ) which can be loaded after restart.
+2. Store grid of previous commands and results to see every guess made so far.
+3. Set a limit of turns for a given game and create a loss condition if a limit is set.
+4. Performance profiles & Sharded bot for improved performance
+5. Custom images instead of emojis of letters with background colour depending on state.
+
 ## NB - Many many thanks to the developer of [Wordle](https://www.powerlanguage.co.uk/wordle/) for inspiring this bot!
