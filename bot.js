@@ -75,6 +75,17 @@ const parse = (msg) => {
   };
 };
 
+const executeCommand = (msg, commandObj) => {
+  const commandFunc = commands[commandObj.command];
+  if (commandFunc != null) {
+    const gameState = gamesByChannel[msg.channelId] || defaultState();
+    const replyObj = commandFunc(commandObj.args, wordsByLength, gameState);
+    gamesByChannel[msg.channelId] = replyObj.gameState;
+    return replyObj.reply;
+  }
+  return `Command ${commandObj.command} is not valid.`;
+};
+
 client.on('messageCreate', (msg) => {
   const botMentioned = Boolean(msg.mentions.users.get(client.user.id));
   if (botMentioned) {
@@ -82,12 +93,9 @@ client.on('messageCreate', (msg) => {
     try {
       if (commandObj.command === 'error') {
         throw commandObj.errorMsg;
+      } else {
+        msg.reply(executeCommand(msg, commandObj));
       }
-      const commandFunc = commands[commandObj.command];
-      const gameState = gamesByChannel[msg.channelId] || defaultState();
-      const replyObj = commandFunc(commandObj.args, wordsByLength, gameState);
-      gamesByChannel[msg.channelId] = replyObj.gameState;
-      msg.reply(replyObj.reply);
     } catch (error) {
       console.error(error);
       msg.reply(`error: ${JSON.stringify(error)}`);
