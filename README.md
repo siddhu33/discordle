@@ -21,27 +21,15 @@ yarn install
 yarn start
 ```
 ---
-## Commands
+## Current Commands
 
-```d
-@Discordle !ping
-```
-### Ping server to see if it is up.
+|Command|Description|
+|:-:|:-:|
+|`@Discordle !ping`| Ping server to see if it is up. Returns `pong`.|
+|`@Discordle !start [length]`| Start a game of length `length`. Will pick out a word from the corpus file, `corpus.txt`.|
+|`@Discordle !state`| Get the current state of a game, if one is currently being played in the channel.|
+|`@Discordle !guess [word]`| Guess the word described by `word`. Will increment the guesses counter.|
 
-```d
-@Discordle !start [length]
-```
-### Start a game of length `length`. Will pick out a word from the corpus file, `corpus.txt`.
-
-```d
-@Discordle !state
-```
-### Get the current state of a game, if one is currently being played in the channel.
-
-```d
-@Discordle !guess [word]
-```
-### Guess the word described by `word`. Will increment the guesses counter
 ---
 ## Feature Ideas
 
