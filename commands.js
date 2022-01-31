@@ -28,7 +28,7 @@ const startFunc = (args, wordsByLength, gameState) => {
   }
   const wordLength = args[0];
   if (!VALID_LENGTHS.includes(wordLength)) {
-    throw new Error(`Cannot create game with word length : ${wordLength}. Please choose number between 3 and 10 inclusive.`);
+    throw new Error(`Cannot create game with word length : ${wordLength}. Please choose number between 3 and 12 inclusive.`);
   }
   const words = wordsByLength[wordLength];
   const randomWord = words[Math.floor(Math.random() * words.length)];
@@ -56,7 +56,10 @@ const testWord = (guess, answer) => {
   return [results, letters];
 };
 
-const letterText = (failedSet) => LETTERS.map((l) => (failedSet.has(l) ? `~~${l}~~` : l)).join(' ');
+// const letterText = (failedSet) => \
+// LETTERS.map((l) => (failedSet.has(l) ? `~~${l}~~` : l)).join(' ');
+
+const letterText = (failedSet) => LETTERS.filter((l) => !failedSet.has(l)).join(' ');
 
 const guessFunc = (args, _wordsByLength, gameState) => {
   if (gameState.started) {
