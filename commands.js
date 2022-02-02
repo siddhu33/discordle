@@ -96,6 +96,7 @@ const guessFunc = (args, _wordsByLength, gameState) => {
 };
 
 const stateFunc = (_args, _wordsByLength, gameState) => {
+  console.log('gameState: %s', gameState);
   if (gameState.started) {
     return {
       reply: `game started, length : ${gameState.length}, guesses : ${gameState.guesses}`,
