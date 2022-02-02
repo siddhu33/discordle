@@ -139,13 +139,17 @@ const redisExitHandler = async () => {
     for (const e of Object.entries(gamesByChannel)) {
       const [key, value] = e;
       const valueArray = Array.from(value.letters);
-      results.push(redisClient.hSet('gameState', key, JSON.stringify({ ...value, letters: valueArray })));
+      if (value.started) {
+        results.push(redisClient.hSet('gameState', key, JSON.stringify({ ...value, letters: valueArray })));
+      } else {
+        results.push(redisClient.hDel('gameState', key));
+      }
     }
     await Promise.all(results);
   } catch (error) {
     console.error('could not publish existing state to redis %s due to error %s', process.env.REDIS_URL, error);
   } finally {
-    console.log('exiting now, written current results to redis.');
+    console.log('successfully written current results to redis.');
     redisClient.disconnect();
   }
   process.exit(0);
