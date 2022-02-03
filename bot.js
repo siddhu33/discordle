@@ -14,6 +14,14 @@ const client = new Client({
   ],
 });
 const CORPUS_PATH = 'corpus.txt';
+const REDIS_CLIENT = {
+  url: process.env.REDIS_TLS_URL ? process.env.REDIS_TLS_URL : process.env.REDIS_URL,
+  tls: {
+    // Heroku uses self-signed certificate, which will cause error in connection
+    // unless check is disabled
+    rejectUnauthorized: false,
+  },
+};
 const stream = fs.createReadStream(CORPUS_PATH);
 const myInterface = readline.createInterface({
   input: stream,
@@ -30,7 +38,7 @@ const wordsByLength = {};
 
 const loadRedis = async () => {
   let data = {};
-  const redisClient = createClient({ url: process.env.REDIS_URL });
+  const redisClient = createClient(REDIS_CLIENT);
   try {
     await redisClient.connect();
     data = await redisClient.hGetAll('gameState');
@@ -132,7 +140,7 @@ client.login(process.env.DISCORD_TOKEN);
 
 const redisExitHandler = async () => {
   console.log('exiting now, writing current state to redis...');
-  const redisClient = createClient({ url: process.env.REDIS_URL });
+  const redisClient = createClient(REDIS_CLIENT);
   try {
     await redisClient.connect();
     const results = [];
