@@ -16,9 +16,10 @@ const client = new Client({
 const CORPUS_PATH = 'corpus.txt';
 const REDIS_CLIENT = {
   url: process.env.REDIS_TLS_URL ? process.env.REDIS_TLS_URL : process.env.REDIS_URL,
-  tls: {
+  socket: {
     // Heroku uses self-signed certificate, which will cause error in connection
     // unless check is disabled
+    tls: true,
     rejectUnauthorized: false,
   },
 };
