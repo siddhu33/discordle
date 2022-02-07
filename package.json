@@ -31,6 +31,7 @@
     "dotenv": "^11.0.0",
     "erlpack": "discord/erlpack",
     "nodemon": "^2.0.15",
+    "redis": "^4.0.3",
     "utf-8-validate": "^5.0.8"
   },
   "devDependencies": {

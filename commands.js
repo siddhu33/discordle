@@ -1,4 +1,4 @@
-const VALID_LENGTHS = ['3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+const VALID_LENGTHS = ['3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
 const LETTERS = Array.from('abcdefghijklmnopqrstuvwxyz');
 const RESPONSE_EMOJI = {
   0: ':black_large_square:',
@@ -28,7 +28,7 @@ const startFunc = (args, wordsByLength, gameState) => {
   }
   const wordLength = args[0];
   if (!VALID_LENGTHS.includes(wordLength)) {
-    throw new Error(`Cannot create game with word length : ${wordLength}. Please choose number between 3 and 12 inclusive.`);
+    throw new Error(`Cannot create game with word length : ${wordLength}. Please choose number between 3 and 16 inclusive.`);
   }
   const words = wordsByLength[wordLength];
   const randomWord = words[Math.floor(Math.random() * words.length)];
@@ -96,6 +96,7 @@ const guessFunc = (args, _wordsByLength, gameState) => {
 };
 
 const stateFunc = (_args, _wordsByLength, gameState) => {
+  console.log('gameState: %s', gameState);
   if (gameState.started) {
     return {
       reply: `game started, length : ${gameState.length}, guesses : ${gameState.guesses}`,

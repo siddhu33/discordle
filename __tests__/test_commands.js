@@ -50,7 +50,7 @@ describe('Bot Command Tests', () => {
       const wordsByLength = { 5: ['tests'] };
       expect(() => {
         commands.start(args, wordsByLength, emptyState);
-      }).toThrowError('Cannot create game with word length : 2. Please choose number between 3 and 12 inclusive.');
+      }).toThrowError('Cannot create game with word length : 2. Please choose number between 3 and 16 inclusive.');
     });
   });
 
