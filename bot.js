@@ -13,16 +13,37 @@ const client = new Client({
     Intents.FLAGS.GUILD_MESSAGES,
   ],
 });
+
+const isLocalhost = (inp) => Boolean(
+  inp.includes('localhost')
+  // [::1] is the IPv6 localhost address.
+  || inp === '[::1]'
+  // 127.0.0.1/8 is considered localhost for IPv4.
+  || inp.match(
+    /.*127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}.*/,
+  ),
+);
+
 const CORPUS_PATH = 'corpus.txt';
-const REDIS_CLIENT = {
-  url: process.env.REDIS_TLS_URL ? process.env.REDIS_TLS_URL : process.env.REDIS_URL,
-  socket: {
-    // Heroku uses self-signed certificate, which will cause error in connection
-    // unless check is disabled
-    tls: true,
-    rejectUnauthorized: false,
-  },
+const REDIS_URL = process.env.REDIS_TLS_URL ? process.env.REDIS_TLS_URL : process.env.REDIS_URL;
+
+const getRedisClient = () => {
+  const redisOptions = {
+    url: REDIS_URL,
+  };
+  if (!isLocalhost(REDIS_URL)) {
+    console.log('adding tls...');
+    redisOptions.socket = {
+      // Heroku uses self-signed certificate, which will cause error in connection
+      // unless check is disabled
+      tls: true,
+      rejectUnauthorized: false,
+    };
+  }
+  return redisOptions;
 };
+
+const REDIS_CLIENT = getRedisClient();
 const stream = fs.createReadStream(CORPUS_PATH);
 const myInterface = readline.createInterface({
   input: stream,
