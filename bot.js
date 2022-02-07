@@ -88,7 +88,8 @@ const executeCommand = (msg, commandObj) => {
 
 client.on('messageCreate', (msg) => {
   const botMentioned = Boolean(msg.mentions.users.get(client.user.id));
-  if (botMentioned) {
+  const messageNotBot = msg.author.id !== client.user.id;
+  if (botMentioned && messageNotBot) {
     const commandObj = parse(msg);
     try {
       if (commandObj.command === 'error') {
