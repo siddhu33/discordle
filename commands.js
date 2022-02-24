@@ -1,3 +1,5 @@
+const checkWord = require('check-word'), words = checkWord('en');
+
 const VALID_LENGTHS = ['3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 const LETTERS = Array.from('abcdefghijklmnopqrstuvwxyz');
 const RESPONSE_EMOJI = {
@@ -70,6 +72,14 @@ const guessFunc = (args, _wordsByLength, gameState) => {
         gameState,
       };
     }
+
+    if (!words.check(guess)) {
+      return {
+        reply: `Guess ${guess} is not a recognized word, please retry!`,
+        gameState,
+      };
+    }
+    
     const [testResult, letters] = testWord(args[0], gameState.word);
     const newLetters = new Set([...gameState.letters, ...letters]);
     const numSuccess = testResult.reduce((a, b) => (b === '2' ? a + 1 : a), 0);
